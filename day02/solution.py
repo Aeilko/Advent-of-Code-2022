@@ -1,3 +1,4 @@
+from utils.aoc import check_for_input_file
 from utils.file import read_file_content
 
 
