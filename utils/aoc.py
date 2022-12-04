@@ -1,7 +1,11 @@
 import inspect
 import os
 
-import requests
+try:
+    import requests
+except ModuleNotFoundError:
+    pass
+
 
 from utils.file import read_file_content
 
@@ -12,7 +16,7 @@ YEAR = 2022
 def check_for_input_file():
     path = os.path.dirname(inspect.stack()[1].filename)
     sep = os.sep
-    if not os.path.exists(path + sep + "inputs" + sep + "input") and os.path.exists(".." + sep + "session"):
+    if not os.path.exists(os.path.join(path, "inputs", "input")) and os.path.exists(".." + sep + "session") and "requests" in globals():
         print(" --- Downloading input file --- ")
         day = path.split(sep)[-1]
         day = int(day[3:])
