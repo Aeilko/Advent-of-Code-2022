@@ -11,15 +11,15 @@ YEAR = 2022
 
 def check_for_input_file():
     path = os.path.dirname(inspect.stack()[1].filename)
-    sep = os.path.sep
+    sep = os.sep
     if not os.path.exists(path + sep + "inputs" + sep + "input") and os.path.exists(".." + sep + "session"):
         print(" --- Downloading input file --- ")
-        day = path.split(os.sep)[-1]
+        day = path.split(sep)[-1]
         day = int(day[3:])
 
         url = BASE_URL + "/" + str(YEAR) + "/day/" + str(day) + "/input"
         headers = {'User-Agent': 'https://github.com/Aeilko/Advent-of-Code-' + str(YEAR)}
-        cookies = {"session": read_file_content(".." + os.path.sep + "session")}
+        cookies = {"session": read_file_content(".." + sep + "session")}
 
         response = requests.get(url, headers=headers, cookies=cookies)
         if not response:
@@ -28,5 +28,5 @@ def check_for_input_file():
             file = open("inputs/input", "wb")
             file.write(response.content)
             file.close()
-            print("File downloaded successfully")
+            print("Input downloaded successfully")
         print()
