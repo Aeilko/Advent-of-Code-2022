@@ -72,7 +72,10 @@ def test_part2():
 
 
 if __name__ == '__main__':
+    # Check if we have an input file, if not, download it
+    check_for_input_file()
 
+    # Perform this day's solution
     input = read_file_content("inputs/input")
 
     print(" --- Part 1 --- ")

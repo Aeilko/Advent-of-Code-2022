@@ -1,6 +1,10 @@
+# AOC
+/session
+**/inputs/input
+
 # Python
-/venv
+/venv/
 __pycache__/
 
 # JetBrains
-/.idea
+/.idea/
