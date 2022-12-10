@@ -54,7 +54,7 @@ def solve_part2(input: str) -> int:
 
     line = ""
     for i in range(len(r)):
-        if i % 40 == 0:
+        if i % 40 == 0 and i != 0:
             print(line)
             line = ""
         line += r[i]
@@ -96,4 +96,5 @@ if __name__ == '__main__':
 
     print("\n --- Part 2 ---")
     test_part2()
+    print()
     solve_part2(input)
