@@ -3,14 +3,14 @@ from utils.file import read_file_content
 
 
 def solve_part1(input: str) -> int:
-    lines = input.split("\n")
+    lines = input[:-1].split("\n")
     r = -1
 
     return r
 
 
 def solve_part2(input: str) -> int:
-    lines = input.split("\n")
+    lines = input[:-1].split("\n")
     r = -1
 
     return r
