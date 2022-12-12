@@ -5,7 +5,7 @@ from utils.aoc import check_for_input_file
 from utils.file import read_file_content
 
 
-def shortest_path(start, end, grid, ignore_a=False):
+def shortest_path(start, end, grid):
     to_visit = PriorityQueue()
     to_visit.put((0, start))
     visited = set()
@@ -18,7 +18,7 @@ def shortest_path(start, end, grid, ignore_a=False):
             nx = x + dx
             ny = y + dy
             if 0 <= nx < len(grid[y]) and 0 <= ny < len(grid):
-                if grid[ny][nx] - grid[y][x] < 2 and (not ignore_a or grid[ny][nx] != 1):
+                if grid[ny][nx] - grid[y][x] < 2:
                     if (nx, ny) == end:
                         r = cost + 1
                         break
@@ -83,8 +83,6 @@ def solve_part2(input: str) -> int:
                     if (nx, ny) not in visited:
                         to_visit.put((cost + 1, (nx, ny)))
         visited.add((x, y))
-
-    return r
 
     return r
 
