@@ -61,13 +61,31 @@ def solve_part2(input: str) -> int:
             if lines[y][x] == 'E':
                 end = (x, y)
 
-    r = len(grid)*len(grid[0])
+    to_visit = PriorityQueue()
     for sx in range(len(grid[0])):
         for sy in range(len(grid)):
             if grid[sy][sx] == 1:
-                rr = shortest_path((sx, sy), end, grid, True)
-                if rr != -1 and rr < r:
-                    r = rr
+                to_visit.put((0, (sx, sy)))
+    visited = set()
+    r = -1
+    while not to_visit.empty() and r == -1:
+        (cost, (x, y)) = to_visit.get()
+        if (x, y) in visited:
+            continue
+        for (dx, dy) in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+            nx = x + dx
+            ny = y + dy
+            if 0 <= nx < len(grid[y]) and 0 <= ny < len(grid):
+                if grid[ny][nx] - grid[y][x] < 2:
+                    if (nx, ny) == end:
+                        r = cost + 1
+                        break
+                    if (nx, ny) not in visited:
+                        to_visit.put((cost + 1, (nx, ny)))
+        visited.add((x, y))
+
+    return r
+
     return r
 
 
