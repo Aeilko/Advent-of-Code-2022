@@ -19,3 +19,6 @@ class Node:
 
     def __eq__(self, other):
         return other == self.val
+
+    def __str__(self):
+        return str(self.val) + ", (" + (str(self.next.val) if self.next else str(self.next)) + ")"
