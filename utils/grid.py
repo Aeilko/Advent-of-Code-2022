@@ -1,7 +1,7 @@
 import sys
 
 
-def display_dict_grid(grid):
+def display_dict_grid(grid, void='.'):
     minx, maxx, miny, maxy = dict_grid_min_max(grid)
 
     for y in range(miny, maxy+1):
@@ -10,7 +10,7 @@ def display_dict_grid(grid):
             if (x,y) in grid:
                 line += grid[(x, y)]
             else:
-                line += "."
+                line += void
         print(line)
 
 
